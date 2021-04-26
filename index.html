@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo App</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Marck Script' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="content">
+            <div class="title">
+                <h1>My ToDo App</h1>
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><i class="fa fa-tick"></i><a href="#allList">All</a></li>
+                        <li><i class="fa fa-user"></i><a href="#personalList">Personal</a></li>
+                        <li><i class="fa fa-home"></i><a href="#homeList">Home</a></li>
+                        <li><i class="fa fa-briefcase"></i><a href="#workList">Work</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="search-div">
+                    <ul>
+                        <li><input class="searchbar" onkeyup ="search()" autofocus="on" type="text" id="search" placeholder="Search todo..."></li>
+                        <li><a class="add-work" id="openModal">Add todo</a></li>
+                    </ul>
+            </div>
+            <div class="todo-list" id="todo-list">
+                <div id="all"></div>
+                <div id="Personal"></div>
+                <div id="home"></div>
+                <div id="work"></div>
+            </div>
+
+            <div class="modal" id="todo-modal">
+                <!-- <span class="close" id="close-modal">&times;</span> -->
+                <form method="POST">  
+                    <h3>Add activity</h3>
+                <div class="form-group">
+                    <label>What is to be done:</label><br>
+                    <input type="text" id="activity_name">
+                </div>
+                <div class="form-group">
+                    <label>Due date & time:</label><br>
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                </div>
+                <div class="form-group">
+                    <label>Add to List:</label>
+                    <select id="category">
+                        <option>&#128525 Personal</option>
+                        <option>&#129321 Home</option>
+                        <option>&#128528 Work</option>	
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Repeat:</label>
+                    <select id="repeat">
+                        <option>once</option>
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>Monthly</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <input type="submit" id="saveTodo" value="save">
+                    <input type="submit" id="cancel" value="cancel">
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/javascript.js"></script>
+    </body>
+</html>

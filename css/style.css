@@ -1,0 +1,220 @@
+
+body{
+   margin:0;
+   font-family: Marck Script, 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+}
+.content{
+ width: 50%;
+ margin:auto;
+ height:99%;
+ position: absolute;
+ display: block;
+ left: 25%;
+ border-radius: 25px;
+ border: 2px solid #024674;
+}
+.title{
+    text-align: center;
+    border-bottom: 1px solid #024674;
+    width: 80%;
+    margin: auto;
+}
+
+/* menu */
+.menu{
+    width: 100%;
+    margin: auto;
+    position: relative;
+   
+}
+nav{
+   text-align: center;
+   width: 100%;
+}
+nav ul li{
+    display: inline;
+    list-style-type: none;
+    padding:15px 40px;
+    text-align: center;
+}
+nav ul li i{
+   color: #024674;;
+}
+nav ul li i:hover{
+    color:  #f38d08;
+ }
+nav ul li a{
+    text-decoration: none;
+    color:  #024674;
+    font-size: 15pt;
+    display: inline-block;
+    padding: 5px;
+}
+nav ul li a:hover{
+    text-decoration: none;
+    color:  #f38d08;
+    font-size: 15pt;
+    display: inline-block;
+    border-bottom: 1px solid #024674;
+}
+
+/* search bar and menu */
+.search-div{
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+.search-div ul li{
+    display: inline;
+    list-style-type: none;
+    padding: 20px;
+}
+.searchbar{
+    display: inline-block;
+    width: 60%;
+    padding: 10px;
+
+}
+.add-work{
+   color: #fff;
+    background-color: #1d323f; 
+    display: inline-block;
+    padding:8px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+/* form */
+.modal{
+    border: 2px solid #024674;
+    position: absolute;
+    margin: auto;
+    width:60%;
+    height:80%;
+    padding:20px 25px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 20px;
+    display: none;
+}
+.close{
+    color: #000;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+form{
+padding: 10px;
+width:100%;
+position: absolute;
+height: 100%;
+}
+.form-group{
+    width: 80%;
+    padding: 10px;
+}
+.form-group select{
+    border: 0;
+    outline: 0;
+   border-bottom: 1px solid  #024674; 
+   padding: 10px 10px;
+   width: 100%;
+   background-color: transparent;
+}
+.form-group input{
+    border: 0;
+    outline: 0;
+   border-bottom: 1px solid  #024674; 
+   padding: 10px 10px;
+   width: 100%;
+   background-color: transparent;
+}
+.buttons{
+    display: inline-block;
+    width: 70%;
+}
+.buttons input{
+    padding: 5px;
+    width: 20%;
+}
+.todo-list{
+    display: inline-block;
+    /* margin: 20px; */
+    width: 100%;
+    
+}
+table{
+    width:80%;
+    margin: auto;
+    overflow: auto;
+}
+table tr{
+    padding: 30px 30px;
+    /* border: 1px solid #024674; */
+}
+table tr td{
+    padding:10px;
+}
+
+@media(max-width:1024px){
+    .content{
+        width: 100%;
+        margin:0;
+        height:95%;
+        position: absolute;
+        display: block;
+        /* left: 25%; */
+        border-radius: 25px;
+        border: 2px solid #024674;
+       }
+
+    nav{
+        text-align: center;
+        width: 100%;
+     }
+     nav ul li{
+         display: inline;
+         list-style-type: none;
+         padding:5px 2px;
+         text-align: center;
+     }
+
+     .search-div{
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    .search-div ul li{
+        display: inline;
+        list-style-type: none;
+        padding: 10px;
+    }
+
+    .searchbar{
+        display: inline-block;
+        width: 60%;
+    
+    }
+    .add-work{
+       color: #fff;
+        background-color: #1d323f; 
+        display: inline-block;
+        padding:5px;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+}
