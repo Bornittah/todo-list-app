@@ -5,6 +5,8 @@ let span = document.getElementsByClassName("close")[0];
 
 addTodo.addEventListener('click', function() {
 	modal.style.display = "block";
+    saveButton.style.display = "block";
+    updateButton.style.display = "none";
 });
 document.querySelector('#cancel').addEventListener('click',(e)=>{
 e.preventDefault();
@@ -22,58 +24,76 @@ let activityTime=document.querySelector('#time');
 let activityCategory=document.querySelector('#category');
 let activityRepeat=document.querySelector('#repeat');
 let saveButton=document.querySelector('#saveTodo');
+let updateButton=document.querySelector('#updateTodo');
 let cancelButton=document.querySelector('#cancel');
+
 
 let todoArray=[];
 saveButton.addEventListener('click', (e)=>{
-    if(activityName===''){
-        activityName.value="please enter the activity";
-    }
-    console.log("hi");
     e.preventDefault();
-    let todo={
-        'activity':activityName.value,
-        'date':activityDate.value,
-        'time':activityTime.value,
-        'category':activityCategory.value,
-        'repeat':activityRepeat.value
+    if(activityName.value.length===0){
+        window.alert("please enter the activity");
+        activityName.focus();
     }
-   todoArray.push(todo);
-
-   let data=JSON.parse(localStorage.getItem('Todo'));
-   if(data==null){
-    localStorage.setItem('Todo', '[]');
-    let emptyList=[];
-    emptyList.push('empty');
-}
-   let newTodoList=JSON.parse(localStorage.getItem('Todo'));
-    newTodoList.push(todo);
-    localStorage.setItem('Todo', JSON.stringify(newTodoList));
-    modal.style.display = "none";
-	fetchTodo();
+    else{
+     let pickedDate= new Date(activityDate.value);
+     let today = new Date();
+    if(pickedDate < today){
+        window.alert("Set present date");
+        activityDate.value=new Date();
+    }else{
+        let todo={
+            'activity':activityName.value,
+            'date':activityDate.value,
+            'time':activityTime.value,
+            'category':activityCategory.value,
+            'repeat':activityRepeat.value
+        }
+       todoArray.push(todo);
+    
+       let data=JSON.parse(localStorage.getItem('Todo'));
+       if(data==null){
+        localStorage.setItem('Todo', '[]');
+        let emptyList=[];
+        emptyList.push('empty');
+    }
+       let newTodoList=JSON.parse(localStorage.getItem('Todo'));
+        newTodoList.push(todo);
+        localStorage.setItem('Todo', JSON.stringify(newTodoList));
+        modal.style.display = "none";
+        fetchTodo();
+    } 
+    }
+     
 });
 
 function fetchTodo(){
     let allList=document.querySelector("#all");
     let data=JSON.parse(localStorage.getItem('Todo'));
-    console.log(data)
 
     if(data.length>0){
         let appendTo = '<table id="todoTable">';
 		for (let i = 0; i < data.length; i++) {
-            appendTo += `<tr class="" id='${i}'><td  onclick='viewData(${i})'>${data[i].activity}</td><td>${data[i].date} ${data[i].time}</td><td><img onclick='deleteTodo(${i})' src="images/delete.png" id='delete'/></td></tr>`;
-        //     console.log(data[i].activity)
-        //     let objectWithGroupByName = {};
-        //     for (let key in data){
-        //        let name = data[key].category;
-        //     if (!objectWithGroupByName[name]){
-        //        objectWithGroupByName[name] = [];
-        //     }
-        //     objectWithGroupByName[name].push(data[key]);
-        // }
-        // console.log(objectWithGroupByName);
+            appendTo += `<tr class="" id='${i}'><td  onclick='viewData(${i})'><i class="fa fa-check"></i> ${data[i].activity}</td><td><i class="fa fa-calendar"></i> ${data[i].date}</td><td><i class="fa fa-clock-o"> ${data[i].time}</td><td><img onclick='deleteTodo(${i})' src="images/delete.png" id='delete'/></td></tr>`;
 		}
         allList.innerHTML = appendTo+"</table>";
+
+    //     let objectWithGroupByName = {};
+    //     for (let key in data){
+    //        let name = data[key].category;
+    //        if(name="Personal"){
+    //         let personalList=`<ul>`
+          
+    //         personalList += `<li>${data[i].activity}</li>`
+         
+    //         document.querySelector("#personal").innerHTML=personalList +"</ul>";
+    //        }
+    //     if (objectWithGroupByName[name]){
+    //        objectWithGroupByName[name] = [];
+    //     }
+    //     objectWithGroupByName[name].push(data[key]);
+    // }
+    // console.log(objectWithGroupByName);
 
 	}else {
 		allList.innerHTML = "No saved datas";
@@ -92,6 +112,33 @@ function viewData(index){
     activityTime.value=todo[id].time,
     activityCategory.value=todo[id].category,
     activityRepeat.value=todo[id].repeat
+    saveButton.style.display = "none";
+    updateButton.style.display = "block";
+    document.querySelector('#h3').value="Your Activity";
+
+ 
+ updateButton.addEventListener('click', function(e){
+        e.preventDefault();
+          if (confirm("Are you sure, you want to do these changes? ")) {
+        
+        let newTodo={
+            'activity':activityName.value,
+            'date':activityDate.value,
+            'time':activityTime.value,
+            'category':activityCategory.value,
+            'repeat':activityRepeat.value
+        }
+        todo[id] = newTodo;
+            localStorage.setItem('Todo',JSON.stringify(todo));
+            modal.style.display = "none";
+            fetchTodo();
+        } else {
+        //dont update
+        modal.style.display = "none";
+        }
+        
+    });
+
 }
 
 	// when delete button is clicked

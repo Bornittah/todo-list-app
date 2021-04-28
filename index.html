@@ -3,15 +3,16 @@
     <head>
         <title>Todo App</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link href='https://fonts.googleapis.com/css?family=Marck Script' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Reem Kufi' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
     </head>
     <body>
         <div class="content">
+          <div class="top-bar">
             <div class="title">
-                <h1>My ToDo App</h1>
+                <h1>My Todo App</h1>
             </div>
             <div class="menu">
                 <nav>
@@ -29,9 +30,11 @@
                         <li><a class="add-work" id="openModal">Add todo</a></li>
                     </ul>
             </div>
+          </div>
+          <div class="wrapper">
             <div class="todo-list" id="todo-list">
                 <div id="all"></div>
-                <div id="Personal"></div>
+                <div id="personal"></div>
                 <div id="home"></div>
                 <div id="work"></div>
             </div>
@@ -39,14 +42,14 @@
             <div class="modal" id="todo-modal">
                 <!-- <span class="close" id="close-modal">&times;</span> -->
                 <form method="POST">  
-                    <h3>Add activity</h3>
+                    <h3 id="h3">Add activity</h3>
                 <div class="form-group">
-                    <label>What is to be done:</label><br>
+                    <label>What is to be done:<span id="error"></span></label><br>
                     <input type="text" id="activity_name">
                 </div>
                 <div class="form-group">
                     <label>Due date & time:</label><br>
-                    <input type="date" id="date">
+                    <input type="date" id="date"[min]="minDate" [max]="maxDate">
                     <input type="time" id="time">
                 </div>
                 <div class="form-group">
@@ -68,10 +71,12 @@
                 </div>
                 <div class="buttons">
                     <input type="submit" id="saveTodo" value="save">
+                    <input type="submit" id="updateTodo" value="update">
                     <input type="submit" id="cancel" value="cancel">
                 </div>
                 </form>
             </div>
+          </div>
         </div>
 
         <script type="text/javascript" src="js/javascript.js"></script>

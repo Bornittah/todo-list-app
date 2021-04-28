@@ -1,18 +1,26 @@
 
 body{
    margin:0;
-   font-family: Marck Script, 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+   font-family: Reem Kufi, 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 .content{
  width: 50%;
  margin:auto;
  height:99%;
  position: absolute;
- display: block;
+ display: flex;
  left: 25%;
  border-radius: 25px;
- border: 2px solid #024674;
+ border: 2px solid #f19306;
+ background-color: #07070704;
+ flex-direction: column;
 }
+.top-bar{
+    position: relative;
+    height: auto;
+    flex:20%;
+}
+
 .title{
     text-align: center;
     border-bottom: 1px solid #024674;
@@ -144,18 +152,33 @@ height: 100%;
    background-color: transparent;
 }
 .buttons{
-    display: inline-block;
-    width: 70%;
+    display: flex;
+    width: 100%;
 }
 .buttons input{
     padding: 5px;
     width: 20%;
+    margin: 10px;
+    /* flex: 30%; */
+}
+#updateTodo{
+    display: none;
+}
+.wrapper{
+    height: 60%;
+    flex:80%;
 }
 .todo-list{
-    display: inline-block;
-    /* margin: 20px; */
+    /* display: inline-block; */
+    height: 100%;
     width: 100%;
+    margin: auto;
+    overflow: auto;
     
+}
+.todoTable{
+    height: 100%;
+    overflow: auto;
 }
 table{
     width:80%;
@@ -177,9 +200,10 @@ table tr td{
         height:95%;
         position: absolute;
         display: block;
-        /* left: 25%; */
+        padding:0;
         border-radius: 25px;
         border: 2px solid #024674;
+        left:0;
        }
 
     nav{
