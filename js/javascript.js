@@ -62,6 +62,7 @@ saveButton.addEventListener('click', (e)=>{
         localStorage.setItem('Todo', JSON.stringify(newTodoList));
         modal.style.display = "none";
         fetchTodo();
+        modal.reset();
     } 
     }
      
@@ -96,7 +97,7 @@ function fetchTodo(){
     // console.log(objectWithGroupByName);
 
 	}else {
-		allList.innerHTML = "No saved datas";
+		allList.innerHTML = "No saved todo!";
 	   
 	}
 
@@ -132,6 +133,7 @@ function viewData(index){
             localStorage.setItem('Todo',JSON.stringify(todo));
             modal.style.display = "none";
             fetchTodo();
+            modal.reset();
         } else {
         //dont update
         modal.style.display = "none";
